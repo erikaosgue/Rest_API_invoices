@@ -11,9 +11,10 @@ class Invoice(BaseModel, Base):
     """ Class Invoice """
 
     __tablename__ = 'invoices'
-    invoice_number = Column(Integer, nullable=False)
+    invoice_number = Column(String(10), nullable=False)
     date = Column(Date, nullable=True)
     client_id = Column(String(60), ForeignKey('clients.id'), nullable=False)
+    client_name = Column(String(60), nullable=False)
     discount = Column(Integer, nullable=False)
     items = relationship("Item", backref="invoices", cascade="all, delete, delete-orphan")
     subtotal = Column(Integer, nullable=True, default=0)
