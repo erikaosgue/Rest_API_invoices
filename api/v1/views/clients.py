@@ -26,6 +26,7 @@ def get_client(client_id):
     """
     Retrieves the object invoice base on client_id
     """
+    
     client = storage.get(Client, client_id)
     if not client:
         abort(404)

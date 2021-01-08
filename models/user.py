@@ -12,3 +12,7 @@ class User(BaseModel, Base):
     lastInvoiceCode = Column(Integer, nullable=True)
     lastItemCode = Column(Integer, nullable=True)
     name = Column(String(60), nullable=False)
+
+    def __init__(self, *args, **kwargs):
+        """initializes Item"""
+        super().__init__(*args, **kwargs)

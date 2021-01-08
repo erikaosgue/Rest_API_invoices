@@ -8,6 +8,7 @@ from models.item import Item
 from models.invoice import Invoice
 from models.client import Client
 from models.product import Product
+from models.user import User
 from models.base_model import Base
 
 from os import getenv
@@ -19,7 +20,9 @@ classes = {
     "Invoice": Invoice, 
     "Client": Client,
     "Product": Product,
-    "Item": Item}
+    "Item": Item,
+    "User": User
+    }
 
 
 class DBStorage:
@@ -87,3 +90,4 @@ class DBStorage:
     def count(self, cls=None):
         """ Counts the number of objects per class """
         return len(self.all(cls))
+    

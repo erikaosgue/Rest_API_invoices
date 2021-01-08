@@ -38,7 +38,7 @@ def get_invoice(invoice_id):
     if not invoice:
         abort(404)
 
-    print(invoice.items)
+    print(invoice)
 
     return jsonify(invoice.to_dict())
 
@@ -50,14 +50,11 @@ def get_invoiceItems(invoice_id):
     """
     invoice = storage.get(Invoice, invoice_id)
     if not invoice:
-        abort(404)
+        abort(404, "not Invoice")
     list_items = []
-    print("@@@@ ", invoice.items)
     for items in invoice.items:
-        print("==> ", items)
         list_items.append(items.to_dict())
 
-    print(list_items)
 
     return jsonify(list_items)
 
@@ -112,7 +109,6 @@ def post_invoice():
     
 
     new_invoice = Invoice(**data)
-    print(new_invoice.items)
 
     new_invoice.save()
     return make_response(jsonify(new_invoice.to_dict()), 201)

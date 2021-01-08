@@ -17,3 +17,7 @@ class Item(BaseModel, Base):
     product_id = Column(String(60), ForeignKey('products.id'), nullable=False)
     invoice_id = Column(String(60), ForeignKey('invoices.id'), nullable=False)
     total = Column(Integer, nullable=True, default=0)
+
+    def __init__(self, *args, **kwargs):
+        """initializes Item"""
+        super().__init__(*args, **kwargs)

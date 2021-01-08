@@ -16,7 +16,11 @@ class Invoice(BaseModel, Base):
     client_id = Column(String(60), ForeignKey('clients.id'), nullable=False)
     client_name = Column(String(60), nullable=False)
     discount = Column(Integer, nullable=False)
-    items = relationship("Item", backref="invoices", cascade="all, delete, delete-orphan")
+    items = relationship("Item", backref="invoice", cascade="all, delete, delete-orphan")
     subtotal = Column(Integer, nullable=True, default=0)
     total = Column(Integer, nullable=True, default=0)
     num_items = Column(Integer, nullable=True, default=0)
+
+    def __init__(self, *args, **kwargs):
+        """initializes Item"""
+        super().__init__(*args, **kwargs)
