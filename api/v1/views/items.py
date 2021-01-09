@@ -75,7 +75,7 @@ def post_item():
     invoice_1 = storage.get(Invoice, data['invoice_id'])
 
     invoice_1.num_items += 1
-    if invoice_1.num_items >= 3:
+    if invoice_1.num_items == 11:
         return make_response(jsonify({'status': 'max_items'}))
 
     data['total'] = int(data['price']) * int(data['quantity'])
